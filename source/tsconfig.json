@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "module": "system",
+    "target": "es5",
+    "declaration": true,
+    "sourceMap": false,
+    "removeComments": true,
+    "outFile": "./mvc.js",
+    "lib": [
+      "es5",
+      "dom",
+      "es2015.promise",
+      "es6"
+  ] ,
+  },
+  "include": [
+    "src",
+    "lib"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
