@@ -57,6 +57,7 @@ declare interface Array<T> {
     sum(selector: any): any;
 }
 declare class FguiUtils {
+    static packageNamespace: any;
     static load(name: string): Promise<any>;
 }
 declare enum viewLayer {

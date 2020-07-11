@@ -409,6 +409,7 @@ var FguiUtils = (function () {
     function FguiUtils() {
     }
     FguiUtils.load = function (name) {
+        var _this = this;
         return new Promise(function (resolve, reject) {
             var existPkg = fairygui.UIPackage.getByName(name);
             if (existPkg) {
@@ -416,7 +417,8 @@ var FguiUtils = (function () {
             }
             RES.loadGroup(name, 0).then(function () {
                 fairygui.UIPackage.addPackage(name);
-                name[name + "Binder"].bindAll();
+                if (_this.packageNamespace[name][name + "Binder"])
+                    _this.packageNamespace[name][name + "Binder"].bindAll();
                 resolve();
             }).catch(function (err) {
                 console.error("loadfgui error:" + err);
@@ -434,7 +436,7 @@ var LayerManager = (function () {
     function LayerManager() {
     }
     LayerManager.getInstance = function () {
-        if (this._single)
+        if (!this._single)
             this._single = new LayerManager();
         return this._single;
     };

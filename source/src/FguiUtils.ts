@@ -1,4 +1,6 @@
 class FguiUtils {
+    /** 包的命名空间 */
+    public static packageNamespace: any;
     /** 加载fgui资源 */
     public static load(name: string): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -9,7 +11,8 @@ class FguiUtils {
 
             RES.loadGroup(name, 0).then(()=>{
                 fairygui.UIPackage.addPackage(name);
-                name[name + "Binder"].bindAll();
+                if (this.packageNamespace[name][name + "Binder"])
+                    this.packageNamespace[name][name + "Binder"].bindAll();
 
                 resolve();
             }).catch(err => {

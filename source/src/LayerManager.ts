@@ -11,7 +11,7 @@ enum viewLayer {
 class LayerManager {
     private static _single: LayerManager;
     public static getInstance(): LayerManager{
-        if (this._single) this._single = new LayerManager();
+        if (!this._single) this._single = new LayerManager();
 
         return this._single;
     }
