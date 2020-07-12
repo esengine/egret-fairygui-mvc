@@ -216,8 +216,14 @@ Array.prototype.findAll = function (predicate) {
 Array.prototype.contains = function (value) {
   function contains(array, value) {
     for (let i = 0, len = array.length; i < len; i++) {
-      if (JSON.stringify(array[i]) == JSON.stringify(value)) {
-        return true;
+      // 如果是egret对象则有快速判断方法
+      if (array[i] instanceof egret.DisplayObject && value instanceof egret.DisplayObject) {
+        let a = array[i] as egret.DisplayObject;
+        let b = value as egret.DisplayObject;
+        if (a.hashCode == b.hashCode) return true;
+      } else {
+        if (JSON.stringify(array[i]) == JSON.stringify(value))
+          return true;
       }
     }
 
