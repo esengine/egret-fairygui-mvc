@@ -552,17 +552,3 @@ var ViewManager = (function () {
     };
     return ViewManager;
 }());
-var AdvancedView = (function (_super) {
-    __extends(AdvancedView, _super);
-    function AdvancedView() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Object.defineProperty(AdvancedView.prototype, "bindingRoot", {
-        get: function () {
-            return this.model;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return AdvancedView;
-}(BaseView));

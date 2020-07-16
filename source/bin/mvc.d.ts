@@ -86,12 +86,3 @@ declare class ViewManager {
     getView<T>(viewCls: new () => T): T;
     isOpenView(viewCls: any): boolean;
 }
-declare class AdvancedView<TModel> extends BaseView implements IViewFor<TModel> {
-    model: TModel;
-    readonly bindingRoot: TModel;
-}
-interface IActivatableView {
-}
-interface IViewFor<T> extends IActivatableView {
-    model: T;
-}
