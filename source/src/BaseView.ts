@@ -17,9 +17,12 @@ class BaseView extends egret.DisplayObjectContainer {
     /** 视图数据 */
     protected _showData: any;
 
-    constructor(){
+    constructor(name?: string){
         super();
         this._isDispose = false;
+        if (name){
+            this.name = name;
+        }
     }
 
     /**

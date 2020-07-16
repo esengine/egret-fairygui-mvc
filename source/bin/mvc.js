@@ -10,10 +10,13 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var BaseView = (function (_super) {
     __extends(BaseView, _super);
-    function BaseView() {
+    function BaseView(name) {
         var _this = _super.call(this) || this;
         _this.viewLayer = viewLayer.pop;
         _this._isDispose = false;
+        if (name) {
+            _this.name = name;
+        }
         return _this;
     }
     Object.defineProperty(BaseView.prototype, "name", {
@@ -549,3 +552,17 @@ var ViewManager = (function () {
     };
     return ViewManager;
 }());
+var AdvancedView = (function (_super) {
+    __extends(AdvancedView, _super);
+    function AdvancedView() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Object.defineProperty(AdvancedView.prototype, "bindingRoot", {
+        get: function () {
+            return this.model;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return AdvancedView;
+}(BaseView));

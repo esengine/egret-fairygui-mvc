@@ -7,7 +7,7 @@ declare class BaseView extends egret.DisplayObjectContainer {
     protected _fuiView: fairygui.GComponent;
     protected _isShow: boolean;
     protected _showData: any;
-    constructor();
+    constructor(name?: string);
     init(): void;
     resize(): void;
     baseShow(showData?: any): void;
@@ -85,4 +85,13 @@ declare class ViewManager {
     closeViewByCls(viewCls: any): void;
     getView<T>(viewCls: new () => T): T;
     isOpenView(viewCls: any): boolean;
+}
+declare class AdvancedView<TModel> extends BaseView implements IViewFor<TModel> {
+    model: TModel;
+    readonly bindingRoot: TModel;
+}
+interface IActivatableView {
+}
+interface IViewFor<T> extends IActivatableView {
+    model: T;
 }
