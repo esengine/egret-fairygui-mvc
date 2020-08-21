@@ -45,7 +45,6 @@ declare interface Array<T> {
     where(predicate: Function): Array<T>;
     count(predicate: Function): number;
     findAll(predicate: Function): Array<T>;
-    contains(value: any): boolean;
     removeAll(predicate: Function): void;
     remove(element: any): boolean;
     removeAt(index: any): void;

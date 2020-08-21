@@ -78,11 +78,6 @@ declare interface Array<T> {
    */
   findAll(predicate: Function): Array<T>;
   /**
-   * 是否有获取满足表达式的数组元素
-   * @param value 值
-   */
-  contains(value): boolean;
-  /**
    * 移除满足表达式的数组元素
    * @param predicate 表达式
    */
@@ -211,26 +206,6 @@ Array.prototype.findAll = function (predicate) {
   }
 
   return findAll(this, predicate);
-};
-
-Array.prototype.contains = function (value) {
-  function contains(array, value) {
-    for (let i = 0, len = array.length; i < len; i++) {
-      // 如果是egret对象则有快速判断方法
-      if (array[i] instanceof egret.DisplayObject && value instanceof egret.DisplayObject) {
-        let a = array[i] as egret.DisplayObject;
-        let b = value as egret.DisplayObject;
-        if (a.hashCode == b.hashCode) return true;
-      } else {
-        if (JSON.stringify(array[i]) == JSON.stringify(value))
-          return true;
-      }
-    }
-
-    return false;
-  }
-
-  return contains(this, value);
 };
 
 Array.prototype.removeAll = function (predicate) {

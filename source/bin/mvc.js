@@ -239,24 +239,6 @@ Array.prototype.findAll = function (predicate) {
     }
     return findAll(this, predicate);
 };
-Array.prototype.contains = function (value) {
-    function contains(array, value) {
-        for (var i = 0, len = array.length; i < len; i++) {
-            if (array[i] instanceof egret.DisplayObject && value instanceof egret.DisplayObject) {
-                var a = array[i];
-                var b = value;
-                if (a.hashCode == b.hashCode)
-                    return true;
-            }
-            else {
-                if (JSON.stringify(array[i]) == JSON.stringify(value))
-                    return true;
-            }
-        }
-        return false;
-    }
-    return contains(this, value);
-};
 Array.prototype.removeAll = function (predicate) {
     function removeAll(array, predicate) {
         var index;
